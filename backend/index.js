@@ -11,6 +11,7 @@ let port = process.env.PORT || 8080;
 let path = require("path");
 
 // Import database modesls and routes
+const authRoute = require("./routes/auth");
 const userRoute = require("./routes/users");
 const infoRoute = require("./routes/informations");
 const assistRoute = require("./routes/assistances");
@@ -38,6 +39,7 @@ mongoose
   app.use(morgan("common"));
 
   // Routes
+  app.use("/api/auth", authRoute);
   app.use("/api/users", userRoute);
   app.use("/api/informations", infoRoute);
   app.use("/api/assistances", assistRoute);
