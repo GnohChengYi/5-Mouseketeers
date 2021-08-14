@@ -4,6 +4,14 @@ const homePages = [
     tab: 'Home',
   },
   {
+    name: 'individual',
+    tab: 'For Individuals',
+  },
+  {
+    name: 'business',
+    tab: 'For Businesses',
+  },
+  {
     name: 'assistance',
     tab: 'Assistance',
   },

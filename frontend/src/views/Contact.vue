@@ -1,32 +1,35 @@
 <template>
   <BaseLayout :type="pageType">
     <div slot="content">
+      <div class="subscribe">
+        Subscribe to our newsletter to get daily updates
+      </div>
       <div class="container">
         <form @submit.prevent="sendEmail">
-          <label>Email</label>
-
+          <div class="label">Email</div>
           <input
             type="email"
             v-model="email"
             name="email"
             placeholder="Your Email"
           />
-          <h5>Individual Category</h5>
-          <a v-for="iCategory in individualCategories" v-bind:key="iCategory">
-            <input type="checkbox" id="iCategory" v-bind:key="iCategory" />
-            <label for="iCategory" v-bind:key="iCategory">{{
-              iCategory
-            }}</label>
-          </a>
+          <div class="label">Individual Topics</div>
+          <div>
+            <multiselect
+              class="individual"
+              v-model="value"
+              :options="individualCategories"
+            ></multiselect>
+          </div>
 
-          <label>Business Category</label>
-
-          <input
-            type="text"
-            v-model="bcategory"
-            name="bcategory"
-            placeholder="Business category"
-          />
+          <div class="label">Business Topics</div>
+          <div>
+            <multiselect
+              class="business"
+              v-model="value"
+              :options="businessCategories"
+            ></multiselect>
+          </div>
 
           <input type="submit" value="Subscribe" />
         </form>
@@ -38,6 +41,7 @@
 <script>
 import BaseLayout from "../common/components/home/BaseLayout.vue";
 import emailjs from "emailjs-com";
+import Multiselect from "vue-multiselect";
 import utils from "../utils";
 
 export default {
@@ -45,6 +49,7 @@ export default {
 
   components: {
     BaseLayout,
+    Multiselect,
   },
 
   props: {
@@ -57,6 +62,7 @@ export default {
   data() {
     return {
       pageName: "contact",
+
       individualCategories: [
         "COVID-19 Test",
         "COVID-19 Vaccination",
@@ -88,7 +94,6 @@ export default {
             bcategory: this.bcategory,
           }
         );
-        console.log("it works!!!");
       } catch (error) {
         console.log({ error });
       }
@@ -142,7 +147,7 @@ input[type="submit"]:hover {
   text-align: center;
   border-radius: 5px;
   background-color: #fafafa;
-  margin-top: 100px;
+  margin-top: 4vw;
   border-radius: 10px;
   padding: 40px;
   width: 50%;
@@ -151,12 +156,12 @@ input[type="submit"]:hover {
 
 
 <style lang="scss" scoped>
+.subscribe {
+  @include textMixin(#000, 2vw);
+  margin-top: 1vw;
+}
 .label {
-  @include textMixin(#000, 2.5vw, bold, uppercase);
+  @include textMixin(#000, 2vw);
   text-align: left;
-
-  @include web-sm {
-    font-size: 7vw;
-  }
 }
 </style>

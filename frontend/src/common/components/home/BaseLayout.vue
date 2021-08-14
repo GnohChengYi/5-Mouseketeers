@@ -1,6 +1,7 @@
 <template>
   <div class="base-layout">
     <div :class="['header', { toggled }]">
+      <div class="logo" @click="returnHome"></div>
       <div class="navbar">
         <div :class="['tabs', { hidden }]">
           <Tab
@@ -79,17 +80,28 @@ export default {
 
 .header {
   @include flexCenter(row);
-  width: 90%;
-  margin: 0 auto;
-  position: relative;
+  @include position(relative, $left: 0);
+  justify-content: flex-start;
+  margin-top: 1vw;
+  margin-left: 1vw;
+  width: 100%;
+
+  .logo {
+    @include imageCDN('logo.png', 5vw, 5vw);
+    @include position(relative);
+    cursor: pointer;
+    &:hover {
+      filter: brightness(1.1);
+    }
+  }
 
   .navbar {
     .tabs {
       width: 90%;
+      background: #fff;
       display: flex;
       flex-direction: row;
-      justify-content: space-between;
-      margin-top: 3vw;
+      justify-content: flex-start;
     }
   }
 
@@ -101,8 +113,8 @@ export default {
   }
 
   @include web-lg {
-    @include sizeWH(100%, 8vw);
-    background: #000;
+    @include sizeWH(stretch, 8vw);
+    background: #fff;
     margin-bottom: 5vw;
     transition: all 0.5s ease-in-out;
 
@@ -115,7 +127,7 @@ export default {
       display: none;
     }
     .logo {
-      @include sizeWH(12vw, 12vw);
+      @include sizeWH(7vw, 7vw);
       top: 1.4vw;
       margin-left: 3vw;
     }

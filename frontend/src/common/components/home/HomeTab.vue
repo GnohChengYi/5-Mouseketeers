@@ -37,16 +37,16 @@ export default {
   white-space: nowrap;
   margin-left: 1vw;
   margin-right: 1vw;
+  padding-top: 0.1vw;
 
   &.inactive {
-    @include textMixin(#000, 2.8vw);
+    @include textMixin(#112952, 1.2vw, bold);
   }
   &.active {
-    @include textMixin(#f3c63c, 2.8vw);
+    @include textMixin(#112952, 1.2vw, bold);
   }
   &:hover {
-    @include textMixin(#000);
-    background: #f3c63c;
+    @include textMixin(#000, 1.2vw, bold);
   }
 
   @include web-sm {
