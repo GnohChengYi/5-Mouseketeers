@@ -1,2 +1,52 @@
 .env
 /backend/node_modules
+/frontend/node_modules
+
+*.pyc
+
+# dev folders / files, which will be created during deployment
+/log
+/mysql
+db.sqlite3
+# /static
+/configs
+config.cfg
+/.idea/
+access.log
+error.log
+__pycache__
+
+# OS generated files #
+######################
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.swp
+ehthumbs.db
+Thumbs.db
+
+resty/logs/*.log
+resty/logs/*.pid
+resty/*_temp
+pyenv
+.vscode/.ropeproject
+.mypy_cache
+
+
+
+.DS_Store
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+dist/
