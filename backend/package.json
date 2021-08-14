@@ -15,7 +15,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js",
+    "deploy": "SET NODE_ENV=production& nodemon index.js"
   },
   "author": "",
   "license": "ISC"
