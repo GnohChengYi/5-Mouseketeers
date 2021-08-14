@@ -1,62 +1,34 @@
 <template>
   <BaseLayout :type="pageType">
-    <!--
-    <div slot="content">
-      <div class="label">Contact</div>
-      <div class="label">Name</div>
-      <div class="input">
-        <div class="overlay"></div>
-        <input type="text" v-model="email" />
-      </div>
-      <div class="label">Email</div>
-      <div class="input">
-        <div class="overlay"></div>
-        <input type="text" v-model="email" />
-      </div>
-      <div class="label">Subject</div>
-      <div class="input">
-        <div class="overlay"></div>
-        <input type="text" v-model="email" />
-      </div>
-      <div class="label">Message</div>
-      <div class="input">
-        <div class="overlay"></div>
-        <input type="text" v-model="email" />
-      </div>
-      <span @click="subscribe">Subscribe</span> 
-    </div>
-    -->
     <div slot="content">
       <div class="container">
         <form @submit.prevent="sendEmail">
-          
           <label>Email</label>
-          
-          <input 
-            type="email" 
+
+          <input
+            type="email"
             v-model="email"
             name="email"
             placeholder="Your Email"
-            >
-          <label>Individual Category</label>
-          <input 
-            type="text" 
-            v-model="icategory"
-            name="icategory"
-            placeholder="Individual category"
-            >
+          />
+          <h5>Individual Category</h5>
+          <a v-for="iCategory in individualCategories" v-bind:key="iCategory">
+            <input type="checkbox" id="iCategory" v-bind:key="iCategory" />
+            <label for="iCategory" v-bind:key="iCategory">{{
+              iCategory
+            }}</label>
+          </a>
 
           <label>Business Category</label>
-          
-          <input 
-            type="text" 
+
+          <input
+            type="text"
             v-model="bcategory"
             name="bcategory"
             placeholder="Business category"
-            >
-        
-        
-          <input type="submit" value="Subscribe">
+          />
+
+          <input type="submit" value="Subscribe" />
         </form>
       </div>
     </div>
@@ -64,13 +36,12 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
-import BaseLayout from '../common/components/home/BaseLayout.vue';
-import emailjs from 'emailjs-com';
-import utils from '../utils';
+import BaseLayout from "../common/components/home/BaseLayout.vue";
+import emailjs from "emailjs-com";
+import utils from "../utils";
 
 export default {
-  name: 'EventContact',
+  name: "EventContact",
 
   components: {
     BaseLayout,
@@ -85,27 +56,46 @@ export default {
 
   data() {
     return {
-      pageName: 'contact',
+      pageName: "contact",
+      individualCategories: [
+        "COVID-19 Test",
+        "COVID-19 Vaccination",
+        "Financial Assistance",
+        "Law and Enforcement",
+        "Safe Management Measures",
+        "Travel and Quarantine",
+      ],
+      businessCategories: [
+        "Assistance",
+        "Law and Enforcement",
+        "Safe Management Measures",
+      ],
     };
   },
 
   methods: {
     sendEmail(e) {
       try {
-        emailjs.sendForm('service_jovlgjf', 'template_lpx9ove', e.target, 'user_P6gJwOR7kCWx2Iw5Al36K', {
-          //name: this.name,
-          email: this.email,
-          icategory: this.icategory,
-          bcategory: this.bcategory
-        })
-        console.log('it works!!!')
+        emailjs.sendForm(
+          "service_jovlgjf",
+          "template_lpx9ove",
+          e.target,
+          "user_P6gJwOR7kCWx2Iw5Al36K",
+          {
+            //name: this.name,
+            email: this.email,
+            icategory: this.icategory,
+            bcategory: this.bcategory,
+          }
+        );
+        console.log("it works!!!");
       } catch (error) {
-          console.log({error})
+        console.log({ error });
       }
       // Reset form field
-      this.email = ''
-      this.icategory = ''
-      this.bcategory = ''
+      this.email = "";
+      this.icategory = "";
+      this.bcategory = "";
     },
   },
 
@@ -114,12 +104,16 @@ export default {
 </script>
   
 <style scoped>
-* {box-sizing: border-box;}
+* {
+  box-sizing: border-box;
+}
 label {
   font-size: 24px;
   float: left;
 }
-input[type=text], [type=email], textarea {
+input[type="text"],
+[type="email"],
+textarea {
   font-size: 16px;
   width: 100%;
   padding: 12px;
@@ -130,7 +124,7 @@ input[type=text], [type=email], textarea {
   margin-bottom: 30px;
   resize: vertical;
 }
-input[type=submit] {
+input[type="submit"] {
   font-size: 16px;
   background-color: #4fc3f7;
   color: white;
@@ -139,12 +133,12 @@ input[type=submit] {
   border-radius: 4px;
   cursor: pointer;
 }
-input[type=submit]:hover {
+input[type="submit"]:hover {
   background-color: #b8c7b9;
 }
 .container {
   display: block;
-  margin:auto;
+  margin: auto;
   text-align: center;
   border-radius: 5px;
   background-color: #fafafa;
