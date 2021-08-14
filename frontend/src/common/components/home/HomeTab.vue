@@ -39,13 +39,13 @@ export default {
   margin-right: 1vw;
 
   &.inactive {
-    @include textMixin(#000, 2.8vw, bold, uppercase);
+    @include textMixin(#000, 2.8vw);
   }
   &.active {
-    @include textMixin(#f3c63c, 2.8vw, bold, uppercase);
+    @include textMixin(#f3c63c, 2.8vw);
   }
   &:hover {
-    @include textMixin(#000, bold, uppercase);
+    @include textMixin(#000);
     background: #f3c63c;
   }
 

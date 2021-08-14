@@ -47,13 +47,6 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.(js|vue)$/,
-        loader: 'eslint-loader',
-        enforce: 'pre',
-        include: [fromSrc('.')],
-        options: { emitWarnings: true },
-      },
-      {
         test: /\.vue$/,
         loader: 'vue-loader',
       },
@@ -96,10 +89,8 @@ const config = {
             options: {
               ident: 'postcss',
               plugins: () => [
-                /* eslint-disable global-require */
                 require('postcss-import')(),
                 require('autoprefixer')(),
-                /* eslint-enable global-require */
               ],
             },
           },

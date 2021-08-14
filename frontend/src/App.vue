@@ -49,10 +49,9 @@ export default {
   position: relative;
   z-index: 1;
   font-size: 0.36rem;
-  font-family: sans-serif;
+  font-family: "Open Sans",sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
   overflow: auto;
   text-align: center;
 }
