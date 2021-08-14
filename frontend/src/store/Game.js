@@ -8,7 +8,6 @@ const actions = {
 
 };
 
-/* eslint-disable no-param-reassign, no-shadow */
 const mutations = {
 
 };
