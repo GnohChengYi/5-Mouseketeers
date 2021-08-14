@@ -1,13 +1,14 @@
 const mongoose = require("mongoose");
 
-const InfoSchema = new mongoose.Schema(
+const InformationSchema = new mongoose.Schema(
   {
     announceDate: {
       type: Date,
-      required:true,
+      required: true,
     },
     effectiveDate: {
       type: Date,
+      default: Date.now(),
     },
     title: {
       type: String,
@@ -25,8 +26,16 @@ const InfoSchema = new mongoose.Schema(
       type: Array,
       required: true,
     },
+    articleUrl: {
+      type: String,
+      default: "",
+    },
+    thumbnailUrl: {
+      type: String,
+      default: "",
+    },
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Information", InfoSchema);
+module.exports = mongoose.model("Information", InformationSchema);

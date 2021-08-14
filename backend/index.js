@@ -22,11 +22,10 @@ dotenv.config();
 // Connet to database
 mongoose
   .connect(
-    "mongodb+srv://bingsen:5mouseketeers@cluster0.ag8nj.mongodb.net/LIT2021?retryWrites=true&w=majority",
+    "mongodb+srv://bingsen0806:testing123@cluster0.k8sbi.mongodb.net/LIT2?retryWrites=true&w=majority",
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      useCreateIndex: true,
     }
   )
   .then(() => console.log("Database connected!"))
